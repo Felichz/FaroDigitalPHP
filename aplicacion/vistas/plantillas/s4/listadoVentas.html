@@ -1,0 +1,131 @@
+<section>
+    <style type="text/css">
+        table
+        {
+            background: #3C7A89 !important;
+            border-spacing: 0 2px;
+        }
+
+        tr
+        {
+            background: #E6EBE0;
+        }
+
+        table tr td
+        {
+            padding: 0 .5em;
+        }
+
+        table tr:first-child td
+        {
+            text-align: center;
+            font-size: 16px;
+            padding:.5em;
+            border-bottom: 5px solid #3C7A89;
+            font-weight: 600;
+        }
+
+        table tr:nth-child(2) td
+        {
+            padding: 1em;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .ver
+        {
+            background: #3a5f61;
+            text-align: center;
+            display: block;
+            padding: 0;
+            position: relative;
+            left: 0;
+            transition: .3s;
+        }
+
+        .ver a
+        {
+            color: #EAEAEA;
+            font-weight: bold;
+            display: block;
+            padding: .5em .25em;
+        }
+
+        .ver:hover
+        {
+            left: .5em;
+            transition: .1s;
+        }
+
+        .ver:hover a
+        {
+            color: #3a5f61;
+            background: #EAEAEA;
+        }
+    </style>
+
+    <br/>
+    <nav class="altNav">
+        <ul>
+            <li>
+                <a href="index.php?s=s4&do=pv">
+                    Punto de venta
+                </a>
+            </li>
+            <li>
+                <a href="index.php?s=s4&do=listadoProductos">
+                    Reporte de productos
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <h1 style="text-align: center; font-size: 24px; font-weight: 600;">
+        CONSULTAR VENTAS
+    </h1>
+
+    <div class="semana" style="text-align: center;">
+		<form>
+			<h3>
+			Desde: <input style="margin-right: 2em;" required type="date" name="desde"/>
+			Hasta: <input required type="date" name="hasta">
+			</h3>
+
+			<input type="hidden" name="s" value="s4"/>
+			<input type="hidden" name="do" value="listadoVentas"/> 
+			<input type="submit" value="Consultar">
+			{if isset($PAGE.listaVentas)}
+			<input type="button" value="Limpiar" onclick="location.href='index.php?s=s4&do=listadoVentas';">
+			{/if}
+		</form>
+
+		<h2>{$PAGE.error}</h2>
+    </div>
+
+   {if isset($PAGE.listaVentas)}
+    <table style="width: 90%; margin: 0 auto;">
+        <tbody>
+            <tr><td colspan="4">Ventas</td></tr>
+            <tr style="text-align: center;">
+                <td>ID de cliente</td>
+                <td>Nombre</td>
+                <td>Fecha</td>
+                <td>Monto</td>
+            </tr>
+
+            {foreach $PAGE.listaVentas as $ventas}
+                <tr>
+                    <td>{$ventas.cliente.id}</td>
+                    <td>{$ventas.cliente.nombre} {$ventas.cliente.apellido}</td>
+                    <td>{$ventas.fecha}</td>
+                    <td {if $ventas.mayor == true} style="background: #3a5f61; color: #E6EBE0;" {/if}>{$ventas.monto}</td>
+                    <td class="ver"><a href="index.php?s=s4&do=factura&id={$ventas.id}" target="_blank">Ver</a></td>
+                </tr>
+
+            {/foreach}
+
+        </tbody>
+    </table>
+    {/if}
+
+</section>

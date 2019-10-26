@@ -1,0 +1,176 @@
+<section>
+    <h2>
+        Unidad 2 - Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Actividad - funciones
+        </h2>
+        <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+            <tr bgcolor="#CECECE">
+                <td>
+                    Función
+                </td>
+                <td>
+                    Salida HTML
+                </td>
+            </tr>
+            <tr bgcolor="#FFFFFFF">
+                <td rowspan="2">
+                    <a href="{$PAGE.funcion.enlace[0]}" target="_blank">
+                        {$PAGE.funcion.id[0]}
+                    </a>
+                </td>
+                <td>
+                    <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+                        <caption>
+                            <h3>
+                                {$PAGE.funcion.texto[0]} con datos
+                            </h3>
+                        </caption>
+                        <thead>
+                            <tr bgcolor="#E6CCFF">
+                                <td>
+                                    Item
+                                </td>
+                                <td>
+                                    Nombre
+                                </td>
+                                <td>
+                                    Apellido
+                                </td>
+                                <td>
+                                    Celular
+                                </td>
+                                <td>
+                                    Email
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {$tot = $PAGE.funcion.data|@count}
+							{$idx = 0}
+							{while $idx < $tot && $tot > 0}
+                            <tr bgcolor="#FFFFFF">
+                                <td>
+                                    {$idx+1}
+                                </td>
+                                <td>
+                                    {$PAGE.funcion.data[$idx].nombre}
+                                </td>
+                                <td>
+                                    {$PAGE.funcion.data[$idx].apellido}
+                                </td>
+                                <td>
+                                    {$PAGE.funcion.data[$idx].celular}
+                                </td>
+                                <td>
+                                    {$PAGE.funcion.data[$idx].email}
+                                </td>
+                            </tr>
+                            {$idx = $idx + 1}
+							{/while}
+							{if $tot <= 0}
+                            <tr bgcolor="#FFFFFF">
+                                <td colspan="5">
+                                    <p style="text-align: center">
+                                        No hay datos disponibles
+                                        <p>
+                                        </p>
+                                    </p>
+                                </td>
+                            </tr>
+                            {/if}
+                        </tbody>
+                    </table>
+                    <p style="text-align: center">
+                        <b>
+                            Total de filas leidas {$tot}
+                        </b>
+                    </p>
+                </td>
+            </tr>
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+                        <caption>
+                            <h3>
+                                {$PAGE.funcion.texto[0]} sin datos
+                            </h3>
+                        </caption>
+                        <thead>
+                            <tr bgcolor="#E6CCFF">
+                                <td>
+                                    Item
+                                </td>
+                                <td>
+                                    Nombre
+                                </td>
+                                <td>
+                                    Apellido
+                                </td>
+                                <td>
+                                    Celular
+                                </td>
+                                <td>
+                                    Email
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {$PAGE.funcion.data = array()}
+							{$tot = $PAGE.funcion.data|@count}
+							{$idx = 0}
+							{while $idx < $tot && $tot > 0}
+                            <tr bgcolor="#FFFFFF">
+                                <td>
+                                    {$idx+1}
+                                </td>
+                                <td>
+                                    {$PAGE.funcion.data[$idx].nombre}
+                                </td>
+                                <td>
+                                    {$PAGE.funcion.data[$idx].apellido}
+                                </td>
+                                <td>
+                                    {$PAGE.funcion.data[$idx].celular}
+                                </td>
+                                <td>
+                                    {$PAGE.funcion.data[$idx].email}
+                                </td>
+                            </tr>
+                            {$idx = $idx + 1}
+							{/while}
+							{if $tot <= 0}
+                            <tr bgcolor="#FFFFFF">
+                                <td colspan="5">
+                                    <p style="text-align: center">
+                                        No hay datos disponibles
+                                        <p>
+                                        </p>
+                                    </p>
+                                </td>
+                            </tr>
+                            {/if}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <hr/>
+        <p>
+            <a href="index.php?s=s2&do=4411">
+                Anterior
+            </a>
+            |
+            <a href="index.php?s=s2">
+                Indice
+            </a>
+            |
+            <a href="index.php?s=s2&do=4413">
+                Siguiente
+            </a>
+        </p>
+    </div>
+</section>

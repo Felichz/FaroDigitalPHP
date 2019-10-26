@@ -1,0 +1,92 @@
+<section>
+    <h2>
+        Unidad 2 - Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Actividad - funciones
+        </h2>
+        <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+            <tr bgcolor="#CECECE">
+                <td>
+                    Función
+                </td>
+                <td>
+                    Código Smarty
+                </td>
+                <td>
+                    Salida HTML
+                </td>
+            </tr>
+            {* {for} *}
+            <tr bgcolor="#FFFFFFF">
+                <td rowspan="2">
+                    <a href="{$PAGE.funcion.enlace[0]}" target="_blank">
+                        {$PAGE.funcion.id[0]}
+                    </a>
+                </td>
+                <td>
+                    <pre>
+                        {'
+                        <ul>
+                            {for $foo=$PAGE.funcion.desde to $PAGE.funcion.hasta}
+                            <li>{$PAGE.funcion.texto[0]} {$foo@iteration}</li>
+                            {/for}
+                        </ul>
+                        '|@htmlspecialchars}
+                    </pre>
+                </td>
+                <td>
+                    <div class="result">
+                        <ul>
+                            {for $foo=$PAGE.funcion.desde to $PAGE.funcion.hasta}
+                            <li>
+                                {$PAGE.funcion.texto[0]} {$foo@iteration}
+                            </li>
+                            {/for}
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <pre>
+                        {'
+                        <ul>
+                            {for $foo=$PAGE.funcion.desde to $PAGE.funcion.hasta}
+                            <li>{$PAGE.funcion.texto[0]} {$foo@iteration}</li>
+                            {/for}
+                        </ul>
+                        '|@htmlspecialchars}
+                    </pre>
+                </td>
+                <td>
+                    <div class="result">
+                        <ul>
+                            {for $foo=$PAGE.funcion.desde to $PAGE.funcion.hasta max=3}
+                            <li>
+                                {$PAGE.funcion.texto[0]}
+                                {$foo@iteration}
+                            </li>
+                            {/for}
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <hr/>
+        <p>
+            <a href="index.php?s=s2&do=444">
+                Anterior
+            </a>
+            |
+            <a href="index.php?s=s2">
+                Indice
+            </a>
+            |
+            <a href="index.php?s=s2&do=446">
+                Siguiente
+            </a>
+        </p>
+    </div>
+</section>

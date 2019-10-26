@@ -1,0 +1,36 @@
+<section>
+    <h2>
+        Unidad 2 - Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Actividad - funciones
+        </h2>
+        <h3>
+            {$PAGE.funcion.id[0]}
+        </h3>
+        <p>
+            <a href="{$PAGE.modificador.enlace[0]}" target="_blank">
+                [ Referencia al manual oficial de {$PAGE.funcion.id[0]} ]
+            </a>
+        </p>
+	        {capture name=contenido}
+			{include file="s2/441_capture.html"}
+			{/capture}
+			{$smarty.capture.contenido}
+        <hr/>
+        <p>
+            <a href="index.php?s=s2&do=432">
+                Anterior
+            </a>
+            |
+            <a href="index.php?s=s2">
+                Indice
+            </a>
+            |
+            <a href="index.php?s=s2&do=442">
+                Siguiente
+            </a>
+        </p>
+    </div>
+</section>

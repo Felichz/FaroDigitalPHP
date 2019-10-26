@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es">
+{include file=$PAGE.header.html}
+<body>
+	{include file=$PAGE.body.html}
+	{include file=$PAGE.footer.html}
+</body>
+
+<script type="text/javascript">
+	var navSelected = document.querySelector("#navPrincipal li:nth-child({$PAGE['navSelected']}) a");
+	navSelected.setAttribute("class", "navSelected");
+</script>
+
+</html>

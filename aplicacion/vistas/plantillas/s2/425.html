@@ -1,0 +1,81 @@
+{config_load file="{$CONF['path']['loc']}/vistas/config/s2/425.conf"}
+<section>
+    <h2>
+        Unidad 2 - Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Actividad - Variables
+        </h2>
+        <h3>
+            Variables cargadas desde archivos de configuración
+        </h3>
+        <p>
+            Ejemplo para levantar valores desde un archivo de configuración:
+            <br/>
+        </p>
+        <table bgcolor="{#tableBgColor#}" border="{#tableBorderSize#}" width="90%">
+            <tr bgcolor="{#titleBgColor#}">
+                <td>
+                    Nombre
+                </td>
+                <td>
+                    Apellido
+                </td>
+                <td>
+                    Lugar de Nacimiento
+                </td>
+                <td>
+                    Celular
+                </td>
+                <td>
+                    Teléfono:
+                </td>
+                <td>
+                    Email
+                </td>
+            </tr>
+            <tr bgcolor="{#rowBgColor#}">
+                <td>
+                    {$PAGE.persona.nombre}
+                </td>
+                <td>
+                    {$PAGE.persona.apellido}
+                </td>
+                <td>
+                    {$PAGE.persona.lugarNacimiento}
+                </td>
+                <td>
+                    {$PAGE.persona.celular}
+                </td>
+                <td>
+                    {$PAGE.persona.telefono}
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            {$PAGE.persona.email[0]}
+                        </li>
+                        <li>
+                            {$PAGE.persona.email[1]}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <hr/>
+        <p>
+            <a href="index.php?s=s2&do=424">
+                Anterior
+            </a>
+            |
+            <a href="index.php?s=s2">
+                Indice
+            </a>
+            |
+            <a href="index.php?s=s2&do=426">
+                Siguiente
+            </a>
+        </p>
+    </div>
+</section>

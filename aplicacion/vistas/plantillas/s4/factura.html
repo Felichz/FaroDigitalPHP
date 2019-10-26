@@ -1,0 +1,182 @@
+<section>
+	<style type="text/css">
+        table
+        {
+            background: #3C7A89 !important;
+        }
+
+        tr
+        {
+            background: #E6EBE0;
+        }
+
+        table tr td
+        {
+            padding: .5em;
+        }
+
+        table tr:first-child td
+        {
+            text-align: center;
+            font-size: 16px;
+            padding:.5em;
+            border-bottom: 5px solid #3C7A89;
+            font-weight: 600;
+        }
+
+        table tr:nth-child(2) td
+        {
+            padding: 1em;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        tr#filaCliente td
+        {
+            padding: .7em;
+        }
+
+        table#detalles
+        {
+            margin: .5em auto;
+            background: #E6EBE0 !important;
+            width: 30%;
+            text-align: center;
+        }
+
+        table#detalles tr:last-child
+        {
+            font-size: 16px;
+        }
+
+    </style>
+
+    <br/>
+	<nav class="altNav">
+	    <ul>
+	    	<li>
+	            <a href="index.php?s=s4&do=pv">
+	                Punto de venta
+	            </a>
+	        </li>
+	        <li>
+	            <a href="index.php?s=s4&do=listadoVentas">
+	                Reporte de ventas
+	            </a>
+	        </li>
+	        <li>
+	            <a href="index.php?s=s4&do=listadoProductos">
+	                Reporte de productos
+	            </a>
+	        </li>
+	    </ul>
+	</nav>
+
+    <h1 style="text-align: center; font-size: 24px; font-weight: 600;">RECIBO ELECTRONICO</h1>
+	
+	{IF $PAGE.venta.ok < 1}
+		<p style="text-align: center">No se pudo recuperar los detalles de venta</p>
+	{ELSE}
+	<table id="tVenta" align="center" style="text-align: center; background-color: #000000; border: 0; cellpadding: 5; cellspacing: 1; width: 90%">
+		<tbody>
+		
+			<tr bgcolor="003366" valign="middle">
+				<td colspan="4"><font style="text-align: center; font-size: x-large;">DATOS DE VENTA</font></td>
+			</tr>
+			
+			<tr bgcolor="#cecece">
+				<td><strong>C&oacute;digo</strong></td>			
+				<td>Fecha de venta</td>
+			</tr>
+			
+			<tr bgcolor="#ffffff">
+				<td>{$PAGE.venta.id}</td>			
+				<td>{$PAGE.venta.fecha_venta}</td>
+			</tr>
+					
+		</tbody>	
+	</table>
+	<br/>
+
+
+	<table id="Tcliente" align="center" style="text-align: center; background-color: #000000; border: 0; cellpadding: 5; cellspacing: 1; width: 90%">
+		<tbody>
+		
+			<tr bgcolor="003366" valign="middle">
+				<td colspan="4"><font style="text-align: center; font-size: x-large;">DATOS DEL CLIENTE</font></td>
+			</tr>
+			
+			<tr bgcolor="#cecece">
+				<td><strong>Cliente</strong></td>			
+				<td>Direccion</td>
+				<td>Telefono</td>
+				<td>Email</td>
+			</tr>
+			
+			<tr bgcolor="#ffffff">
+				<td>{$PAGE.cliente.data.nombre} {$PAGE.cliente.data.apellido} </td>			
+				<td>{$PAGE.cliente.data.direccion}</td>
+				<td>{$PAGE.cliente.data.celular}</td>
+				<td>{$PAGE.cliente.data.email}</td>
+			</tr>
+					
+		</tbody>	
+	</table>
+	<br/>
+	
+	<table id="tArticulos" align="center" style="text-align: center; background-color: #000000; border: 0; cellpadding: 5; cellspacing: 1; width: 90%">
+		<tbody>
+			<tr bgcolor="003366" valign="middle">
+				<td colspan="6"><font style="text-align: center; font-size: x-large;">DETALLE DE VENTA </font></td>			
+			</tr>
+		
+			<tr bgcolor="#cecece">
+				<td>Item</td>			
+				<td>Descripcion</td>
+				<td>Cantidad</td>
+				<td>Importe</td>
+				<td>Monto</td>	
+			</tr>
+					
+			<!-- Detalle de Venta -->
+			{$myRow = 0}
+        	{foreach $PAGE.detalleVenta as $item}
+        		{$myRow = $myRow + 1}
+                <!-- detalleVenta con productos  -->
+                <tr bgcolor="#fff">        
+                	<td>{$myRow}</td>                                        
+                    <td>{$item.descripcion}</td>            
+                    <td>{$item.cantidad}</td>    
+                    <td style="text-align: right;">{$item.importe}</td>    
+                    <td style="text-align: right;">{$item.monto}</td>                                                        
+                </tr>
+                {foreachelse}
+                <!-- detalleVenta sin productos --> 
+                <tr bgcolor="#fff">
+                    <!-- sino muestro solo los pulldown  -->                        
+                    <td colspan="5">ERROR DE EMISION, NO HAY PRODUCTOS ASOCIADOS</td>                                                                                                          
+                </tr>
+                {/foreach}
+        	<!--  fin de detalle de venta    -->	
+			
+			<tr bgcolor="#ccff00" style="text-align: right; font-size: medium; color: black;">
+				<td colspan="4">DESCUENTO&nbsp;&nbsp;</td>
+				<td style="text-align: right;">{$PAGE.total.descuento}</td>
+			</tr>
+			
+			<tr bgcolor="#ccff00" style="text-align: right; font-size: medium; color: black;">
+				<td colspan="4">IVA&nbsp;&nbsp;</td>
+				<td style="text-align: right;">{$PAGE.total.iva}</td>
+			</tr>
+			
+			<tr bgcolor="#ff9900" style="text-align: right; font-size:x-large;  ; color: black;">
+				<td colspan="4">TOTAL&nbsp;&nbsp;</td>
+				<td style="text-align: right;">{$PAGE.total.monto}</td>
+			</tr>
+	
+		</tbody>	
+	</table>
+	{/IF}	
+
+	<p>&nbsp;</p>
+</section>

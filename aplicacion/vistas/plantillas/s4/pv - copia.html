@@ -1,0 +1,147 @@
+<h1 style="text-align: center">PUNTO DE VENTA</h1>
+
+<form id="tPos">
+
+	<table id="Tcliente" align="center" style="text-align: center; background-color: #000000; border: 0; cellpadding: 5; cellspacing: 1; width: 90%">
+		<tbody>
+		
+			<tr bgcolor="003366" valign="middle">
+				<td colspan="4"><font style="text-align: center; color: white; font-size: x-large;">DATOS DEL CLIENTE</font></td>
+				<td colspan="2"><font style="text-align: center; color: white; font-size: x-large;">VENTAS</font></td>
+			</tr>
+			
+			<tr bgcolor="#cecece">
+				<td><strong>Cliente</strong></td>			
+				<td>Direccion</td>
+				<td>Telefono</td>
+				<td>Email</td>
+				<td rowspan="2" bgcolor="#ffffff"><input type="submit" name="accion" id="accion" value="Procesar"></td>
+				<td rowspan="2" bgcolor="#ffffff"><input type="button" name="bCancelar" id="accion" value="Cancelar" onclick="botonCancelar()"></td>			
+			</tr>
+			
+			<tr bgcolor="#ffffff">
+				<td>{$PAGE.cliente.pulldown}</td>			
+				<td>{$PAGE.cliente.data.direccion}</td>
+				<td>{$PAGE.cliente.data.celular}</td>
+				<td>{$PAGE.cliente.data.email}</td>
+			</tr>
+					
+		</tbody>	
+	</table>
+	<br/>
+	
+	<table id="tArticulos" align="center" style="text-align: center; background-color: #000000; border: 0; cellpadding: 5; cellspacing: 1; width: 90%">
+		<tbody>
+			<tr bgcolor="003366" valign="middle">
+				<td colspan="6"><font style="text-align: center; color: white; font-size: x-large;">PRODUCTOS</font></td>			
+			</tr>
+		
+			<tr bgcolor="#cecece">
+				<td>Codigo</td>			
+				<td>Descripcion</td>
+				<td>Cantidad</td>
+				<td>Importe</td>
+				<td>Monto</td>
+				<td><input type="button" onclick="insRow('tArticulos')" value="+"></td>			
+			</tr>
+					
+			<!-- Detalle de Venta -->
+			{$myRow = 1}
+        	{foreach $PAGE.detalleVenta as $item}
+        		{$myRow = $myRow + 1}
+                <!-- detalleVenta con productos  -->
+                <tr bgcolor="#fff">                    
+                    <td>{$PAGE.producto->pulldown($item.id)}</td>                                        
+                    <td>{$item.descripcion}</td>            
+                    <td>{$PAGE.producto->pdCantidad($item.cantidad, $item.stock)}</td>    
+                    <td style="text-align: right;">{$item.importe}</td>    
+                    <td style="text-align: right;">{$item.monto}</td>        
+                    <td>
+                    	{IF $myRow > 2}
+                    	<input type="button" onclick="deleteRow('tArticulos', '{$myRow}')" value="-">
+                    	{/IF}
+                    </td>                                                
+                </tr>
+                {foreachelse}
+                <!-- detalleVenta sin productos --> 
+                <tr bgcolor="#fff">
+                    <!-- sino muestro solo los pulldown  -->                        
+                    <td>{$PAGE.producto->pulldown()}</td>                                        
+                    <td></td>            
+                    <td></td>
+                    <td></td>    
+                    <td></td>        
+                    <td></td>                                                
+                </tr>
+                {/foreach}
+        <!--  fin de detalle de venta    -->	
+			
+			<tr bgcolor="#ccff00" style="text-align: right; font-size: medium; color: black;">
+				<td colspan="4">DESCUENTO&nbsp;&nbsp;</td>
+				<td style="text-align: right;">{$PAGE.total.descuento}</td>
+				<td></td>			
+			</tr>
+			
+			<tr bgcolor="#ccff00" style="text-align: right; font-size: medium; color: black;">
+				<td colspan="4">IVA&nbsp;&nbsp;</td>
+				<td style="text-align: right;">{$PAGE.total.iva}</td>
+				<td></td>			
+			</tr>
+			
+			<tr bgcolor="#ff9900" style="text-align: right; font-size:x-large;  ; color: black;">
+				<td colspan="4">TOTAL&nbsp;&nbsp;</td>
+				<td style="text-align: right;">{$PAGE.total.monto}</td>			
+				<td></td>
+			</tr>
+	
+		</tbody>	
+	</table>	
+
+	<input type="hidden" name="s" value="s4"/>
+	<input type="hidden" name="do" value="pv"/> 
+</form>
+
+<p>&nbsp;</p>
+
+<script type="text/javascript">
+
+function insRow(id) {
+	var table = document.getElementById(id);
+	var myRow = table.rows.length - 3;	
+	//
+    var x = table.insertRow(myRow);
+    
+    x.style.backgroundColor = '#ffffff';
+    //
+    var codigo = x.insertCell(0);
+    var descripcion = x.insertCell(1);
+    var cantidad = x.insertCell(2);
+    var costo = x.insertCell(3);
+    var monto = x.insertCell(4);
+    var boton = x.insertCell(5);
+    //
+    codigo.innerHTML =  "{$PAGE.producto->pulldown()}";
+    descripcion.innerHTML =  "";
+    cantidad.innerHTML =  "";
+    costo.innerHTML =  "";
+    monto.innerHTML =  "";
+    boton.innerHTML =  "<input type='button' onclick='deleteRow(\"tArticulos\", " + myRow + ")' value='-'>";
+}
+
+function deleteRow(id,row) {
+    document.getElementById(id).deleteRow(row);
+    //
+    //console.log(row);
+    //
+    document.getElementById('tPos').submit();  
+}
+
+
+function botonCancelar() {
+    //
+    location.href='index.php?s=s4&do=pv';    
+    //
+    return true;
+}
+
+</script>

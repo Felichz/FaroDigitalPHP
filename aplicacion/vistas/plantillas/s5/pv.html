@@ -1,0 +1,260 @@
+<section>
+    <style type="text/css">
+        table
+        {
+            background: #3C7A89 !important;
+        }
+
+        tr
+        {
+            background: #E6EBE0;
+        }
+
+        table tr td
+        {
+            padding: .5em;
+        }
+
+        table tr:first-child td
+        {
+            text-align: center;
+            font-size: 16px;
+            padding:.5em;
+            border-bottom: 5px solid #3C7A89;
+            font-weight: 600;
+        }
+
+        table tr:nth-child(2) td
+        {
+            padding: 1em;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        tr#filaCliente td
+        {
+            padding: .7em;
+        }
+
+        table#detalles
+        {
+            margin: .5em auto;
+            background: #E6EBE0 !important;
+            width: 30%;
+            text-align: center;
+        }
+
+        table#detalles tr:last-child
+        {
+            font-size: 16px;
+        }
+
+        input[type="number"]
+        {
+            width: 6em;
+        }
+
+    </style>
+
+	<br/>
+	<nav class="altNav">
+	    <ul>
+            <li>
+                <a class="navSelected">
+                    Punto de venta
+                </a>
+            </li>
+	        <li>
+	            <a href="index.php?s=s5&do=listadoVentas">
+	                Reporte de ventas
+	            </a>
+	        </li>
+	        <li>
+	            <a href="index.php?s=s5&do=listadoProductos">
+	                Reporte de productos
+	            </a>
+	        </li>
+	    </ul>
+	</nav>
+
+    <h1 style="text-align: center; font-size: 24px; font-weight: 600;">
+        PUNTO DE VENTA
+    </h1>
+
+    <div id="semana">
+        <form id="tPos">
+            <input name="s" type="hidden" value="s5"/>
+            <input name="do" type="hidden" value="pv"/>
+            <table align="center" id="Tcliente" style="text-align: center; background-color: #000000; border: 0; cellpadding: 5; cellspacing: 1; width: 90%">
+                <tbody>
+                    <tr bgcolor="003366" valign="middle">
+                        <td colspan="4">
+                            DATOS DEL CLIENTE
+                        </td>
+                        <td colspan="2">
+                            VENTAS
+                        </td>
+                    </tr>
+                    <tr bgcolor="#cecece">
+                        <td>
+                            <strong>
+                            	Cliente
+                            </strong>
+                        </td>
+                        <td>
+                            Direccion
+                        </td>
+                        <td>
+                            Telefono
+                        </td>
+                        <td>
+                            Email
+                        </td>
+                        <td rowspan="2">
+                            <input id="accion" name="accion" type="submit" value="Procesar"/>
+                        </td>
+                        <td rowspan="2">
+                            <input type="button" name="bCancelar" id="accion" value="Cancelar" onclick="botonCancelar()">
+                        </td>
+                    </tr>
+                    <tr id='filaCliente'>
+                        <td>
+                            {$PAGE.cliente.pulldown}
+                        </td>
+                        <td>
+                            {$PAGE.cliente.data.direccion}
+                        </td>
+                        <td>
+                            {$PAGE.cliente.data.celular}
+                        </td>
+                        <td>
+                            {$PAGE.cliente.data.email}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+            <table align="center" id="tArticulos" style="text-align: center; background-color: #000000; border: 0; cellpadding: 5; cellspacing: 1; width: 90%">
+                <tbody>
+                    <tr bgcolor="003366" valign="middle">
+                        <td colspan="6">
+                            PRODUCTOS
+                        </td>
+                    </tr>
+                    <tr bgcolor="#cecece">
+                        <td>
+                            <b>
+                                Producto
+                            </b>
+                        </td>
+                        <td>
+                            Descripcion
+                        </td>
+                        <td>
+                            Cantidad
+                        </td>
+                        <td>
+                            Importe
+                        </td>
+                        <td>
+                            Monto
+                        </td>
+                        <td>
+                            <input type="button" onclick="insRow('tArticulos')" value="+">
+                        </td>
+                    </tr>
+
+                    <!-- Detalle de Venta -->
+					{$myRow = 1}
+		        	{foreach $PAGE.detalleVenta as $item}
+		        		{$myRow = $myRow + 1}
+		                <!-- detalleVenta con productos  -->
+		                <tr bgcolor="#fff">                    
+		                    <td>{$PAGE.producto->pulldown($item.id)}</td>                                        
+		                    <td>{$item.descripcion}</td>            
+		                    <td>{$PAGE.producto->pdCantidad($item.cantidad, $item.stock, $item.id)}</td>    
+		                    <td style="text-align: right;" class="{$item.id}">{$item.importe}</td>    
+		                    <td style="text-align: right;" class="{$item.id}">{$item.monto}</td>        
+		                    <td>
+		                    	{IF $myRow > 2}
+		                    	<input type="button" onclick="deleteRow('tArticulos', '{$myRow}')" value="-">
+		                    	{/IF}
+		                    </td>                                                
+		                </tr>
+		                {foreachelse}
+		                <!-- detalleVenta sin productos --> 
+		                <tr bgcolor="#fff">
+		                    <!-- sino muestro solo los pulldown  -->                        
+		                    <td>{$PAGE.producto->pulldown()}</td>                                        
+		                    <td></td>            
+		                    <td></td>
+		                    <td></td>    
+		                    <td></td>        
+		                    <td></td>                                                
+		                </tr>
+		                {/foreach}
+		        	<!--  fin de detalle de venta    -->	
+                </tbody>
+            </table>
+        </form>
+
+            <table id="detalles">
+                <tbody>
+                    <tr><td colspan="3">Detalles</td></tr>
+                    <tr>
+                        <td>Descuento</td>
+                        <td>IVA</td>
+                        <td>Total</td>
+                    </tr>
+                    <tr>
+                        <td>{$PAGE.total.descuento}</td>
+                        <td>{$PAGE.total.iva}</td>
+                        <td>{$PAGE.total.monto}</td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</section>
+
+<script type="text/javascript">
+
+function insRow(id) {
+	var table = document.getElementById(id);
+	var myRow = table.rows.length;	
+	//
+    var x = table.insertRow(myRow);
+    
+    x.style.backgroundColor = '#ffffff';
+    //
+    var codigo = x.insertCell(0);
+    var descripcion = x.insertCell(1);
+    var cantidad = x.insertCell(2);
+    var costo = x.insertCell(3);
+    var monto = x.insertCell(4);
+    var boton = x.insertCell(5);
+    //
+    codigo.innerHTML =  "{$PAGE.producto->pulldown()}";
+    descripcion.innerHTML =  "";
+    cantidad.innerHTML =  "";
+    costo.innerHTML =  "";
+    monto.innerHTML =  "";
+    boton.innerHTML =  "<input type='button' onclick='deleteRow(\"tArticulos\", " + myRow + ")' value='-'>";
+}
+
+function deleteRow(id,row) {
+    document.getElementById(id).deleteRow(row);
+    //
+    //console.log(row);
+    //
+    document.getElementById('tPos').submit();  
+}
+
+
+function botonCancelar() {
+    //
+    location.href='index.php?s=s5&do=pv';    
+    //
+    return true;
+}
+
+</script>

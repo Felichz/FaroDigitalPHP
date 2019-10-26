@@ -1,0 +1,84 @@
+{config_load file="s2/425.conf"}
+<section>
+    <h2>
+        Unidad 2 - Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Actividad - Variables
+        </h2>
+        <h3>
+            Variable reservada { $smarty }
+        </h3>
+        <hr/>
+        <p>
+            <b>
+                {$PAGE.seccion.titulo[0]}
+            </b>
+        </p>
+        <p>
+            {$PAGE.seccion.descripcion[0]}
+        </p>
+        <p>
+            {* Muestra el parametro s pasado en modo get *}
+            <b>
+                Valor de variable GET['s']:
+            </b>
+            {$smarty.get.s}
+            <br/>
+            {* Muestra la variable "SERVER_NAME" *}
+            <b>
+                Valor de variable SERVER_NAME:
+            </b>
+            {$smarty.server.SERVER_NAME}
+            <br/>
+            {* Nombre del script PHP "SCRIPT_NAME" *}
+            <b>
+                Valor de variable SCRIPT_NAME:
+            </b>
+            {$smarty.server.SCRIPT_NAME}
+        </p>
+        <hr/>
+        {* Ejemplo tomado de http://www.smarty.net/docsv2/es/language.variables.smarty.tpl *}
+        <p>
+            <b>
+                {$PAGE.seccion.titulo[1]}
+            </b>
+        </p>
+        <p>
+            {$PAGE.seccion.descripcion[1]}
+        </p>
+        <p>
+            {* utilice el modificador date_format para mostrar la fecha y hora actual *}
+            <b>
+                El valor de la fecha actual:
+            </b>
+            {$smarty.now|date_format:"%Y-%m-%d %H:%M:%S"}
+            <br/>
+            <b>
+                Nombre de la plantilla activa:
+            </b>
+            {$smarty.template}
+            <br/>
+            <b>
+                Versión de Smarty
+            </b>
+            {$smarty.version}
+            <br/>
+        </p>
+        <hr/>
+        <p>
+            <a href="index.php?s=s2&do=425">
+                Anterior
+            </a>
+            |
+            <a href="index.php?s=s2">
+                Indice
+            </a>
+            |
+            <a href="index.php?s=s2&do=431">
+                Siguiente
+            </a>
+        </p>
+    </div>
+</section>

@@ -1,0 +1,98 @@
+<section>
+    <h2>
+        Unidad 2 - Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Actividad - funciones
+        </h2>
+        <h3>
+            Funciones de asignación
+        </h3>
+        <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+            <tr bgcolor="#CECECE">
+                <td>
+                    Función
+                </td>
+                <td>
+                    Texto Original
+                </td>
+                <td>
+                    Texto con funcion
+                </td>
+            </tr>
+            {* {$var=...} *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.funcion.enlace[0]}" target="_blank">
+                        {$PAGE.funcion.id[0]}
+                    </a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <p>
+                        {$PAGE.funcion.texto[0] = 'Texto de ejemplo.....'} Valor de {'$PAGE.funcion.texto[0]'|@htmlspecialchars} luego de aplicar la función:
+                        <br/>
+                        <pre class="result">{$PAGE.funcion.texto[0]}</pre>
+                    </p>
+                    <p>
+                        {$PAGE.funcion.texto[0] = 10 * 30} Valor de {'$PAGE.funcion.texto[0]'|@htmlspecialchars} luego de aplicar la función:
+                        <br/>
+                        <pre class="result">{$PAGE.funcion.texto[0]}</pre>
+                    </p>
+                </td>
+            </tr>
+            {* append *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.funcion.enlace[1]}" target="_blank">
+                        {$PAGE.funcion.id[1]}
+                    </a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <p>
+                        Creando en tiempo de ejecución la variable $persona de tipo arreglo asociativo: {append var='persona' value='Mi Nombre' index='nombre'}
+                        <pre class="result">Nombre: {$persona.nombre}</pre>
+                        {append var='persona' value='Mi Apellido' index='apellido'}
+                        <pre class="result">Apellido: {$persona.apellido}</pre>
+                    </p>
+                </td>
+            </tr>
+            {* assign *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.funcion.enlace[2]}" target="_blank">
+                        {$PAGE.funcion.id[2]}
+                    </a>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <p>
+                        {assign var='nombre' value='NombreAssign' }
+                        <pre class="result">Nombre: {$nombre}</pre>
+                        {assign var='apellido' value='ApellidoAssign'}
+                        <pre class="result">Apellido: {$apellido}</pre>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <hr/>
+        <p>
+            <a href="index.php?s=s2&do=441">
+                Anterior
+            </a>
+            |
+            <a href="index.php?s=s2">
+                Indice
+            </a>
+            |
+            <a href="index.php?s=s2&do=443">
+                Siguiente
+            </a>
+        </p>
+    </div>
+</section>

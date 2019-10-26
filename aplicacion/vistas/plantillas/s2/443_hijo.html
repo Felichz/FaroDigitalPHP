@@ -1,0 +1,65 @@
+<section>
+    <h2>
+        Unidad 2 - Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Actividad - funciones
+        </h2>
+        <h3>
+            {$PAGE.funcion.id[0]}
+        </h3>
+        <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+            <tr bgcolor="#CECECE">
+                <td>
+                    Función
+                </td>
+                <td>
+                    Texto Original
+                </td>
+                <td>
+                    Texto con funcion
+                </td>
+            </tr>
+            {* {block} *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.funcion.enlace[0]}" target="_blank">
+                        {$PAGE.funcion.id[0]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.funcion.texto[0]}</pre>
+                </td>
+                <td>
+                    <p>
+                        Texto agregado antes de la marca:
+                        <div class="result">
+                            {block name="contenido1"} {$PAGE.funcion.texto[0]} {/block}
+                        </div>
+                    </p>
+                    <p>
+                        Texto agregado después de la marca:
+                        <div class="result">
+                            {block name="contenido2"} {$PAGE.funcion.texto[0]} {/block}
+                        </div>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <hr/>
+        <p>
+            <a href="index.php?s=s2&do=442">
+                Anterior
+            </a>
+            |
+            <a href="index.php?s=s2">
+                Indice
+            </a>
+            |
+            <a href="index.php?s=s2&do=444">
+                Siguiente
+            </a>
+        </p>
+    </div>
+</section>

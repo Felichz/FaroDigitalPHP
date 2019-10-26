@@ -1,0 +1,158 @@
+<section>
+    <h1 style="text-align: center">PUNTO DE VENTA</h1>
+    <div id="semana">
+        <form id="tPos">
+            
+        <input name="s" type="hidden" value="s2"/>
+        <input name="do" type="hidden" value="450"/>
+        <table id="Tcliente" align="center" style="text-align: center; background-color: #000000; border: 0; cellpadding: 5; cellspacing: 1; width: 90%">
+            <tbody>
+            
+                <tr bgcolor="003366" valign="middle">
+                    <td colspan="5"><font style="text-align: center; color: white; font-size: x-large;">DATOS DEL CLIENTE</font></td>
+                    <td colspan="2"><font style="text-align: center; color: white; font-size: x-large;">VENTAS</font></td>
+                </tr>
+                
+                <tr bgcolor="#cecece">
+                    <td><strong>Cliente</strong></td>           
+                    <td>Direccion</td>
+                    <td>Telefono</td>
+                    <td>Email</td>
+                    <td>Antiguedad</td>
+                    <td rowspan="2" bgcolor="#ffffff"><input type="submit" name="accion" id="accion" value="Procesar"></td>
+                    <td rowspan="2" bgcolor="#ffffff"><input type="submit" name="accion" id="accion" value="Cancelar"></td>         
+                </tr>
+                
+                <tr bgcolor="#ffffff">
+                    <td>
+                        {$PAGE.pullDownCL}
+                    </td>           
+                    <td>{$PAGE.cliente.direccion}</td>
+                    <td>{$PAGE.cliente.celular}</td>
+                    <td>{$PAGE.cliente.email}</td>
+                    <td>{$PAGE.cliente.antiguedad}</td>
+                </tr>
+                        
+            </tbody>    
+        </table>
+        <br/>
+        <table id="tArticulos" align="center" style="text-align: center; background-color: #000000; border: 0; cellpadding: 5; cellspacing: 1; width: 90%">
+            <tbody>
+                <tr bgcolor="003366" valign="middle">
+                    <td colspan="7"><font style="text-align: center; color: white; font-size: x-large;">PRODUCTOS</font></td>           
+                </tr>
+            
+                <tr bgcolor="#cecece">
+                    <td><b>Producto</b></td>            
+                    <td>Descripcion</td>
+                    <td>Cantidad</td>
+                    <td>Stock</td>
+                    <td>Importe</td>
+                    <td>Monto</td>
+                    <td><input type="button" onclick="insRow('tArticulos')" value="+"></td>         
+                </tr>
+                <!--
+                <?php
+                    $subtotal = 0;
+                    $total = 0;
+                    $descuento = 0;
+                    $descontado = 0;
+                    $iva = 0;
+
+                    if (isset($_REQUEST['producto'])){
+                        $ct = count ($_REQUEST['producto']);                
+                        for ($i=0, $j=2; $i<$ct; $i++, $j++){
+                            $_REQUEST['cantidad'][$i] = isset($_REQUEST['cantidad'][$i]) ? $_REQUEST['cantidad'][$i] : 1;
+                            $cantidad = '<input type="hidden" name="cantidad[]" value="1"/>';
+                            $producto = array();
+                            $producto['nombre'] = '';
+                            $producto['descripcion'] = '';
+                            $producto['importe'] = '';
+                            $producto['stock'] = '';
+                            $monto_format = '';
+
+                            //
+                            $oPR->pullDown($_REQUEST['producto'][$i]);
+
+                            if($_REQUEST['producto'][$i] != 0)
+                            {
+                                // Existe el cliente por Id
+                                if (isset($oPR->_oo['res']['id'])){
+                                    $producto = $oPR->_oo['res'];
+                                }
+                                //
+                                $monto = $producto['importe'] * $_REQUEST['cantidad'][$i];
+                                $monto_format = number_format($monto, 2);
+                                
+                                // Calculo subtotal
+                                $subtotal = $subtotal + $monto;
+
+                                $producto['importe'] = number_format($producto['importe'], 2);
+                                //
+
+                                $cantidad = pdCantidad($_REQUEST['cantidad'][$i], $producto['stock']);
+                            }
+                            //
+                            echo "<tr bgcolor='#ffffff'>
+                                    <td>{$oPR->_oo['html']}</td>
+                                    <td><b>{$producto['nombre']}</b><br/>{$producto['descripcion']}</td>
+                                    <td>{$cantidad}</td>
+                                    <td>{$producto['stock']}</td>
+                                    <td>{$producto['importe']}</td>
+                                    <td>{$monto_format}</td>
+                                    <td><input type='button' onclick='deleteRow(\"tArticulos\", {$j})' value='-'><input type='hidden' name='row[]' value='{$j}'></td>           
+                                </tr>";
+
+                        }
+
+                        // Calcular descuento del cliente
+                        if(!$_REQUEST['idCliente'] == null)
+                        {
+                            if($cliente["antiguedad"] >= 11)
+                            {
+                                $descuento = 0.05;
+                            }
+
+                            if($cliente["antiguedad"] >=21)
+                            {
+                                $descuento = 0.07;
+                            }
+
+                            $descuento = $descuento + $cliente["descuento"] / 100;
+                        }
+                        $descontado = $subtotal * $descuento;
+
+                        //Descontar al subtotal
+                        $subtotal = $subtotal - $descontado;
+                        //Calcular iva
+                        $iva = $subtotal * 0.22;
+                        $total = $subtotal + $iva;
+                        
+                    }
+                
+                ?>  
+                -->
+                <tr bgcolor="#ccff00" style="font-size: medium; color: black;">
+                    <td style="text-align: right;" colspan="4">DESCUENTO&nbsp;&nbsp;</td>
+                    <td><!-- <?php echo number_format($descontado, 2) . " (" . $descuento * 100 . "%)"; ?>--></td>
+                    <td></td>           
+                </tr>
+                
+                <tr bgcolor="#ccff00" style="font-size: medium; color: black;">
+                    <td style="text-align: right;" colspan="4">IVA&nbsp;&nbsp;</td>
+                    <td><!-- <?php echo number_format($iva, 2); ?>--></td>
+                    <td></td>           
+                </tr>
+                
+                <tr bgcolor="#ff9900" style="font-size:x-large;  ; color: black;">
+                    <td style="text-align: right;" colspan="4">TOTAL&nbsp;&nbsp;</td>
+                    <td><!-- <?php echo number_format($total, 2); ?>--></td>            
+                    <td></td>
+                </tr>
+
+            </tbody>    
+        </table>
+
+        </form>
+    </div>
+</section>

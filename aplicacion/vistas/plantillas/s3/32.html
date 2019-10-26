@@ -1,0 +1,100 @@
+<section>
+    <h2>
+        Unidad 3 :: Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Desarrollo PHP POO
+        </h2>
+        <h3>
+            Añadiendo propiedades
+        </h3>
+        <table bgcolor="#000000" border="0" cellpadding="5" cellspacing="1" width="90%">
+            <tr bgcolor="#dedede">
+                <td>
+                    <b>
+                        Descripción
+                    </b>
+                </td>
+                <td>
+                    <b>
+                        Salida HTML
+                    </b>
+                </td>
+            </tr>
+            <tr bgcolor="#ffffff">
+                <td>
+                    <p>
+                        Invocando el metodo desde la clase: {'$oUO::VC'}
+                    </p>
+                </td>
+                <td>
+                    <div class="result">
+                        {$PAGE.data.msg[0]}
+                    </div>
+                </td>
+            </tr>
+            <tr bgcolor="#ffffff">
+                <td>
+                    <p>
+                        Invocando el metodo desde la clase: {'$oUO->_oo'}
+                    </p>
+                </td>
+                <td>
+                    <div class="result">
+                        {$PAGE.data.msg[1]}
+                    </div>
+                </td>
+            </tr>
+            <tr bgcolor="#ffffff">
+                <td>
+                    <p>
+                        Solo se puede acceder a un atributo privado desde un metodo:
+                        <br/>
+                        {'$oUO->verPrivado(\'db\')'}
+                        <br/>
+                        {'$oUO->verPrivado(\'conf\')'}
+                    </p>
+                </td>
+                <td>
+                    <div class="result">
+                        {$PAGE.data.msg[2]}
+                    </div>
+                    <div class="result">
+                        {$PAGE.data.msg[3]}
+                    </div>
+                </td>
+            </tr>
+            <tr bgcolor="#ffffff">
+                <td>
+                    <p>
+                        Solo se puede acceder a un protegido privado desde un metodo:
+                        <br/>
+                        {'$oUO->verProtegido(\'lock\')'}
+                        <br/>
+                    </p>
+                </td>
+                <td>
+                    <div class="result">
+                        {$PAGE.data.msg[4]}
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <hr/>
+        <p>
+            <a href="index.php?s=s3&do=31">
+                Anterior
+            </a>
+            |
+            <a href="index.php?s=s3">
+                Indice
+            </a>
+            |
+            <a href="index.php?s=s3&do=33">
+                Siguiente
+            </a>
+        </p>
+    </div>
+</section>

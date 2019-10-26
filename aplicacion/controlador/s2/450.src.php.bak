@@ -1,0 +1,162 @@
+
+<section>
+<h1 style="text-align: center; font-weight: bold; font-size: 2em;">
+    PUNTO DE VENTA
+</h1>
+<div class="semana">
+<form id="tPos" style="color: #111;">
+    <input name="s" type="hidden" value="s2"/>
+    <input name="do" type="hidden" value="450"/>
+    <table align="center" id="Tcliente" style="text-align: center; background-color: #000000; border: 0; cellpadding: 5; cellspacing: 1; width: 100%">
+        <tbody>
+            <tr bgcolor="003366" valign="middle">
+                <td colspan="4">
+                    <font style="text-align: center; color: white; font-size: x-large;">
+                        DATOS DEL CLIENTE
+                    </font>
+                </td>
+                <td colspan="2">
+                    <font style="text-align: center; color: white; font-size: x-large;">
+                        VENTAS
+                    </font>
+                </td>
+            </tr>
+            <tr bgcolor="#cecece">
+                <td>
+                    <strong>
+                        Cliente
+                    </strong>
+                </td>
+                <td>
+                    Direccion
+                </td>
+                <td>
+                    Telefono
+                </td>
+                <td>
+                    Email
+                </td>
+                <td bgcolor="#ffffff" rowspan="2">
+                    <input id="accion" name="accion" type="submit" value="Procesar"/>
+                </td>
+                <td bgcolor="#ffffff" rowspan="2">
+                    <input id="accion" name="accion" type="submit" value="Cancelar"/>
+                </td>
+            </tr>
+            <tr bgcolor="#ffffff">
+                <td>
+                    {$PAGE.pullDownCL}
+                </td>
+                <td>
+                    {$PAGE.cliente.direccion}
+                </td>
+                <td>
+                    {$PAGE.cliente.celular}
+                </td>
+                <td>
+                    {$PAGE.cliente.email}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <table align="center" id="tArticulos" style="text-align: center; background-color: #000000; border: 0; cellpadding: 5; cellspacing: 1; width: 100%">
+        <tbody>
+            <tr bgcolor="003366" valign="middle">
+                <td colspan="6">
+                    <font style="text-align: center; color: white; font-size: x-large;">
+                        PRODUCTOS
+                    </font>
+                </td>
+            </tr>
+            <tr bgcolor="#cecece">
+                <td>
+                    Codigo
+                </td>
+                <td>
+                    Descripcion
+                </td>
+                <td>
+                    Cantidad
+                </td>
+                <td>
+                    Importe
+                </td>
+                <td>
+                    Monto
+                </td>
+                <td>
+                    <input onclick="insRow('tArticulos')" type="button" value="+"/>
+                </td>
+            </tr>
+            <!--
+					<?php	
+					function detalles ()
+					{
+						if (isset($_REQUEST['producto'])){
+									$ct = count ($_REQUEST['producto']);				
+									for ($i=0, $j=2; $i<$ct; $i++, $j++){
+										$cantidad = '';
+										$producto = array();
+										$producto['nombre'] = '';
+										$producto['descripcion'] = '';
+										$producto['importe'] = 0.00;
+										//
+										$oPR->pullDown($_REQUEST['producto'][$i]);
+										// Existe el cliente por Id
+										if (isset($oPR->_oo['res']['id'])){
+											$producto = $oPR->_oo['res'];
+										}
+										//
+										$_REQUEST['cantidad'][$i] = isset($_REQUEST['cantidad'][$i]) ? $_REQUEST['cantidad'][$i] : 0;					
+										$monto = number_format($producto['importe'] * $_REQUEST['cantidad'][$i], 2);
+										$producto['importe'] = number_format($producto['importe'], 2);
+										//
+										$cantidad = pdCantidad($_REQUEST['cantidad'][$i]);
+										//
+										echo "<tr bgcolor='#ffffff'>
+												<td>{$oPR->_oo['html']}</td>
+												<td><b>{$producto['nombre']}</b><br/>{$producto['descripcion']}</td>
+												<td>{$cantidad}</td>
+												<td>{$producto['importe']}</td>
+												<td>{$monto}</td>
+												<td><input type='button' onclick='deleteRow(\"tArticulos\", {$j})' value='-'><input type='hidden' name='row[]' value='{$j}'></td>			
+											</tr>";
+
+									}
+								}
+					}
+					?>
+					-->
+            <tr bgcolor="#ccff00" style="text-align: right; font-size: medium; color: black;">
+                <td colspan="4">
+                    DESCUENTO
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr bgcolor="#ccff00" style="text-align: right; font-size: medium; color: black;">
+                <td colspan="4">
+                    IVA
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr bgcolor="#ff9900" style="text-align: right; font-size:x-large;  ; color: black;">
+                <td colspan="4">
+                    TOTAL
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+</div>
+</section>

@@ -1,0 +1,80 @@
+<section>
+    <style type="text/css">
+        table
+        {
+            background: #3C7A89 !important;
+        }
+
+        tr
+        {
+            background: #E6EBE0;
+        }
+
+        table tr td
+        {
+            padding: .5em;
+        }
+
+        table tr:first-child td
+        {
+            text-align: center;
+            font-size: 16px;
+            padding:.5em;
+            border-bottom: 5px solid #3C7A89;
+            font-weight: 600;
+        }
+
+        table tr:nth-child(2) td
+        {
+            padding: 1em;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+    </style>
+
+    <br/>
+    <nav class="altNav">
+        <ul>
+            <li>
+                <a href="index.php?s=s4&do=pv">
+                    Punto de venta
+                </a>
+            </li>
+            <li>
+                <a href="index.php?s=s4&do=listadoVentas">
+                    Reporte de ventas
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <h1 style="text-align: center; font-size: 24px; font-weight: 600;">
+        CONSULTAR PRODUCTOS
+    </h1>
+
+    <div class="semana" style="text-align: center;">
+		<h3>Productos m&aacute;s vendidos ordenados por cantidad vendida, se resalta el más vendido y los 10 más vendidos</h3>
+    </div>
+
+    <table style="width: 90%; margin: 0 auto;">
+        <tbody>
+            <tr></tr>
+            <tr style="text-align: center;">
+                <td>ID de Producto</td>
+                <td>Descripci&oacute;n</td>
+                <td>Cantidad</td>
+            </tr>
+
+            {foreach $PAGE.productos as $producto}
+            <tr {if $producto.resaltado == 2} style="background: #3a5f61; color: #E6EBE0;" {/if} {if $producto.resaltado == 1} style="background: #40401d; color: yellow; font-weight: bold; font-size: 14px;" {/if}>
+                <td>{$producto.id}</td>
+                <td>{$producto.descripcion}</td>
+                <td>{$producto.cantidad}</td>
+            </tr>
+            {/foreach}
+
+        </tbody>
+    </table>
+
+</section>

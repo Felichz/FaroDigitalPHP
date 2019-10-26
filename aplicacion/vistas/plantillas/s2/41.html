@@ -1,0 +1,92 @@
+<section>
+    <h2>
+        Unidad 2 - Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Actividad - Sintaxis básica
+        </h2>
+        <h3>
+            Comentarios
+        </h3>
+        <p>
+            Prueba para generar comentarios
+        </p>
+        {* Comentarios
+				Multi
+			linea
+		*}
+
+		{* Comentarios de linea simple *}
+        <p>
+            Podemos notar que los comentarios no se observan a la salida
+        </p>
+        <hr/>
+        <h3>
+            Variables
+        </h3>
+        <p>
+            Algunos ejemplos de referencias de variables
+            <b>
+                $PAGE['template']
+            </b>
+            =
+			{$PAGE.template}
+        </p>
+        <p>
+            Para mayor referencias puede consultar
+            <a href="http://www.smarty.net/docsv2/es/language.syntax.variables.tpl" target="_blank">
+                aqui
+            </a>
+        </p>
+        <p>
+            <p>
+                Acceso al tiempo del sistema en formato timestamp:{time()}
+            </p>
+            <hr/>
+            <h3>
+                Atributos
+            </h3>
+            <p>
+                Ejemplo de como usar formas de contacto por email: {mailto
+address="info@farodigital.net.uy" encode="javascript" subject="Prueba de Contacto"}
+            </p>
+            <p>
+                Ejemplo para generar formulario para captura de fecha usando plugin
+(html_select_date) Smarty: {html_select_date display_days=true month_format="%m"
+field_order="DMY"}
+            </p>
+            <hr/>
+
+			<h3>Colocando variables entre comillas dobles</h3>
+			{assign var="plantilla" value="{$PAGE.template} "}
+			<p>Ejemplo, La plantilla seleccionada es: <b>{$plantilla}</b> observe que la
+			instrucci&oacute;n de asignaci&oacute;n no se ve a la salida.</p>
+			<hr/>
+
+			<h3>Usando funciones matem&aacute;ticas</h3>
+			{assign var="numero" value="1"}
+			{assign var="numero" value= 1 + $numero * 10}
+			<p>El valor de $numero es :<b>{$numero}</b></p>
+			{assign var="numero" value= 1 + $numero * 10}
+			<p>El nuevo valor de $numero es :<b>{$numero}</b></p>
+			{assign var="numero" value= 1 + $numero * 10}
+			<p>El nuevo valor de $numero es :<b>{$numero}</b></p>
+			<hr/>
+
+            <p>
+                <a href="index.php?s=s2&do=13331">
+                    Anterior
+                </a>
+                |
+                <a href="index.php?s=s2">
+                    Indice
+                </a>
+                |
+                <a href="index.php?s=s2&do=421">
+                    Siguiente
+                </a>
+            </p>
+        </p>
+    </div>
+</section>

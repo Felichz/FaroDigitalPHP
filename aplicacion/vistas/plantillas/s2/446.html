@@ -1,0 +1,252 @@
+<section>
+    <h2>
+        Unidad 2 - Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Actividad - funciones
+        </h2>
+        <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+            <tr bgcolor="#CECECE">
+                <td>
+                    Función
+                </td>
+                <td>
+                    Salida HTML
+                </td>
+            </tr>
+            {* {foreach} *}
+            <tr bgcolor="#FFFFFFF">
+                <td rowspan="4">
+                    <a href="{$PAGE.funcion.enlace[0]}" target="_blank">
+                        {$PAGE.funcion.id[0]}
+                    </a>
+                </td>
+                <td>
+                    <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+                        <caption>
+                            <h3>
+                                Ejemplo foreach con índice
+                            </h3>
+                        </caption>
+                        <thead>
+                            <tr bgcolor="#E6CCFF">
+                                <td>
+                                    Item
+                                </td>
+                                <td>
+                                    Nombre
+                                </td>
+                                <td>
+                                    Apellido
+                                </td>
+                                <td>
+                                    Celular
+                                </td>
+                                <td>
+                                    Email
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach $PAGE.funcion.data as $persona}
+                            <tr bgcolor="#FFFFFF">
+                                <td>
+                                    {$persona@iteration}
+                                </td>
+                                {foreach $persona as $key => $item}
+                                <td>
+                                    {$item}
+                                </td>
+                                {/foreach}
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+                        <caption>
+                            <h3>
+                                Ejemplo foreach con break
+                            </h3>
+                        </caption>
+                        <thead>
+                            <tr bgcolor="#E6CCFF">
+                                <td>
+                                    Item
+                                </td>
+                                <td>
+                                    Nombre
+                                </td>
+                                <td>
+                                    Apellido
+                                </td>
+                                <td>
+                                    Celular
+                                </td>
+                                <td>
+                                    Email
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach $PAGE.funcion.data as $persona}
+                            {if $persona@iteration == 4}
+                            {break}
+                            {/if}
+                            <tr bgcolor="#FFFFFF">
+                                <td>
+                                    {$persona@iteration}
+                                </td>
+                                {foreach $persona as $key => $item}
+                                <td>
+                                    {$item}
+                                </td>
+                                {/foreach}
+                            </tr>
+                            {foreachelse}
+                            <tr bgcolor="#FFFFFF">
+                                <td colspan="5">
+                                    <p style="text-align: center">
+                                        No hay datos disponibles
+                                        <p>
+                                        </p>
+                                    </p>
+                                </td>
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+                        <caption>
+                            <h3>
+                                Ejemplo foreach con continue
+                            </h3>
+                        </caption>
+                        <thead>
+                            <tr bgcolor="#E6CCFF">
+                                <td>
+                                    Item
+                                </td>
+                                <td>
+                                    Nombre
+                                </td>
+                                <td>
+                                    Apellido
+                                </td>
+                                <td>
+                                    Celular
+                                </td>
+                                <td>
+                                    Email
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach $PAGE.funcion.data as $persona}
+                            {if $persona@iteration == 3}
+                            {continue}
+                            {else}
+                            <tr bgcolor="#FFFFFF">
+                                <td>
+                                    {$persona@iteration}
+                                </td>
+                                {foreach $persona as $key => $item}
+                                <td>
+                                    {$item}
+                                </td>
+                                {/foreach}
+                            </tr>
+                            {/if} {foreachelse}
+                            <tr bgcolor="#FFFFFF">
+                                <td colspan="5">
+                                    <p style="text-align: center">
+                                        No hay datos disponibles
+                                        <p>
+                                        </p>
+                                    </p>
+                                </td>
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+                        <caption>
+                            <h3>
+                                Ejemplo foreach sin datos
+                            </h3>
+                        </caption>
+                        <thead>
+                            <tr bgcolor="#E6CCFF">
+                                <td>
+                                    Item
+                                </td>
+                                <td>
+                                    Nombre
+                                </td>
+                                <td>
+                                    Apellido
+                                </td>
+                                <td>
+                                    Celular
+                                </td>
+                                <td>
+                                    Email
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {$PAGE.funcion.data = array()} {foreach $PAGE.funcion.data as $persona}
+                            <tr bgcolor="#FFFFFF">
+                                <td>
+                                    {$persona@iteration}
+                                </td>
+                                {foreach $persona as $key => $item}
+                                <td>
+                                    {$item}
+                                </td>
+                                {/foreach}
+                            </tr>
+                            {foreachelse}
+                            <tr bgcolor="#FFFFFF">
+                                <td colspan="5">
+                                    <p style="text-align: center">
+                                        No hay datos disponibles
+                                        <p>
+                                        </p>
+                                    </p>
+                                </td>
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <hr/>
+        <p>
+            <a href="index.php?s=s2&do=445">
+                Anterior
+            </a>
+            |
+            <a href="index.php?s=s2">
+                Indice
+            </a>
+            |
+            <a href="index.php?s=s2&do=447">
+                Siguiente
+            </a>
+        </p>
+    </div>
+</section>

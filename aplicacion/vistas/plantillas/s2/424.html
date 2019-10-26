@@ -1,0 +1,76 @@
+<section>
+    <h2>
+        Unidad 2 - Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Actividad - Variables
+        </h2>
+        <h3>
+            Variables de tipo objeto
+        </h3>
+        <p>
+            Ejemplo para levantar los datos enviados desde el objeto $oPA asignado en la variable smarty $PAGE.persona:
+            <br/>
+        </p>
+        <p>
+            {* Referencia a los atributos de la clase persona *}
+            <b>
+                Nombre:
+            </b>
+            {$PAGE.persona->_nombre}
+            <br/>
+            <b>
+                Apellido:
+            </b>
+            {$PAGE.persona->_apellido}
+            <br/>
+            <b>
+                Lugar de Nacimiento:
+            </b>
+            {$PAGE.persona->_lugarNacimiento}
+            <br/>
+            <b>
+                Celular:
+            </b>
+            {$PAGE.persona->_celular}
+            <br/>
+            <b>
+                Teléfono:
+            </b>
+            {$PAGE.persona->_telefono}
+            <br/>
+            <b>
+                Email:
+            </b>
+            <ul>
+                <li>
+                    {$PAGE.persona->_email[0]}
+                </li>
+                <li>
+                    {$PAGE.persona->_email[1]}
+                </li>
+            </ul>
+            {* Referencia a un metodo de la clase persona *}
+            <b>
+                Nombre Completo:
+            </b>
+            {$PAGE.persona->nombreCompleto()}
+            <br/>
+        </p>
+        <hr/>
+        <p>
+            <a href="index.php?s=s2&do=423">
+                Anterior
+            </a>
+            |
+            <a href="index.php?s=s2">
+                Indice
+            </a>
+            |
+            <a href="index.php?s=s2&do=425">
+                Siguiente
+            </a>
+        </p>
+    </div>
+</section>

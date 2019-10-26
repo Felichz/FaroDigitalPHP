@@ -1,0 +1,109 @@
+<section>
+    <h2>
+        Unidad 2 - Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Actividad - funciones
+        </h2>
+        <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+            <tr bgcolor="#CECECE">
+                <td>
+                    Función
+                </td>
+                <td>
+                    Salida HTML
+                </td>
+            </tr>
+            {* {if},{elseif},{else} *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.funcion.enlace[0]}" target="_blank">
+                        {$PAGE.funcion.id[0]}
+                    </a>
+                </td>
+                <td>
+                    <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+                        <caption>
+                            <h3>
+                                Ejemplo foreach con break
+                            </h3>
+                        </caption>
+                        <thead>
+                            <tr bgcolor="#E6CCFF">
+                                <td>
+                                    Item
+                                </td>
+                                <td>
+                                    Nombre
+                                </td>
+                                <td>
+                                    Apellido
+                                </td>
+                                <td>
+                                    Celular
+                                </td>
+                                <td>
+                                    Email
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach $PAGE.funcion.data as $persona}
+							{if $persona@iteration == 2}
+                            <tr bgcolor="#FFFFFF">
+                                <td>
+                                    {$persona@iteration}
+                                </td>
+                                {foreach $persona as $key => $item}
+                                <td>
+                                    {$item}
+                                </td>
+                                {/foreach}
+                            </tr>
+                            {elseif $persona@iteration == 4}
+                            <tr bgcolor="#FFFFFF">
+                                <td>
+                                    {$persona@iteration}
+                                </td>
+                                {foreach $persona as $key => $item}
+                                <td>
+                                    {$item}
+                                </td>
+                                {/foreach}
+                            </tr>
+                            {else}
+							{continue}
+							{/if}
+							{foreachelse}
+                            <tr bgcolor="#FFFFFF">
+                                <td colspan="5">
+                                    <p style="text-align: center">
+                                        No hay datos disponibles
+                                        <p>
+                                        </p>
+                                    </p>
+                                </td>
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <hr/>
+        <p>
+            <a href="index.php?s=s2&do=446">
+                Anterior
+            </a>
+            |
+            <a href="index.php?s=s2">
+                Indice
+            </a>
+            |
+            <a href="index.php?s=s2&do=448">
+                Siguiente
+            </a>
+        </p>
+    </div>
+</section>

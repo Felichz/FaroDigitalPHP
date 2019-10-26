@@ -1,0 +1,37 @@
+{* funcion *}
+{function name=contenido}
+<p>
+Texto de prueba :
+<div class="result">{$data}</div>
+</p>
+{/function}
+<section>
+<h2>Unidad 2 - Repaso Pr&aacute;ctico - Modelo Vista Controlador</h2>
+<div class="semana">
+<h2>Actividad - funciones</h2>
+<table border="0" cellspaccing="1" cellpadding="5" bgcolor="#000000"
+width="100%">
+<tr bgcolor="#CECECE">
+<td>Funci&oacute;n</td>
+<td>Texto Original</td>
+<td>Texto con funcion</td>
+</tr>
+{* {block} *}
+<tr bgcolor="#FFFFFFF">
+<td><a href="{$PAGE.funcion.enlace[0]}"
+target="_blank">{$PAGE.funcion.id[0]}</a></td>
+<td>
+<pre>{$PAGE.funcion.texto[0]}</pre>
+</td>
+<td>
+{call name=contenido data=$PAGE.funcion.texto[0]}
+</td>
+</tr>
+</table>
+<hr/>
+<p>
+<a href="index.php?s=s2&do=443">Anterior</a> | <a
+href="index.php?s=s2">Indice</a> | <a href="index.php?s=s2&do=445">Siguiente</a>
+</p>
+</div>
+</section>

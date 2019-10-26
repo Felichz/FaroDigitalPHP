@@ -1,0 +1,53 @@
+<section>
+    <h2>
+        Unidad 2 - Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Actividad - Modificadores
+        </h2>
+        <h3>
+            Combinando Modificadores
+        </h3>
+        <p>
+            <a href="{$PAGE.modificador.enlace[0]}" target="_blank">
+                [ Referencia al manual oficial de {$PAGE.modificador.id[0]} ]
+            </a>
+        </p>
+        <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+            <tr bgcolor="#CECECE">
+                <td>
+                    Texto Original
+                </td>
+                <td>
+                    Texto con modificador
+                </td>
+            </tr>
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <pre>{$PAGE.modificador.texto[0]}</pre>
+                </td>
+                <td>
+                    <pre class="result">{$PAGE.modificador.texto[0]|upper|spacify|wordwrap}</pre>
+                    <pre class="result">{$PAGE.modificador.texto[0]|lower|spacify|truncate}</pre>
+                    <pre class="result">{$PAGE.modificador.texto[0]|lower|truncate:30|spacify}</pre>
+                    <pre class="result">{$PAGE.modificador.texto[0]|lower|spacify|truncate:30:". . ."}</pre>
+                </td>
+            </tr>
+        </table>
+        <hr/>
+        <p>
+            <a href="index.php?s=s2&do=431">
+                Anterior
+            </a>
+            |
+            <a href="index.php?s=s2">
+                Indice
+            </a>
+            |
+            <a href="index.php?s=s2&do=441">
+                Siguiente
+            </a>
+        </p>
+    </div>
+</section>

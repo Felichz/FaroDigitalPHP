@@ -1,0 +1,415 @@
+{config_load file="s2/425.conf"}
+<section>
+    <h2>
+        Unidad 2 - Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Actividad - Modificadores
+        </h2>
+        <table bgcolor="#000000" border="0" cellpadding="5" cellspaccing="1" width="100%">
+            <tr bgcolor="#CECECE">
+                <td>
+                    Modificador
+                </td>
+                <td>
+                    Texto Original
+                </td>
+                <td>
+                    Texto con modificador
+                </td>
+            </tr>
+            {* capitalize *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[0]}" target="_blank">
+                        {$PAGE.modificador.id[0]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[0]}</pre>
+                </td>
+                <td>
+                    <p>
+                        Capitalizada de palabras sin dígitos:
+                        <br/>
+                        <pre class="result">{$PAGE.modificador.texto[0]|capitalize}</pre>
+                    </p>
+                    <p>
+                        Capitalizada de palabras con dígitos:
+                        <br/>
+                        <pre class="result">{$PAGE.modificador.texto[0]|capitalize:true}</pre>
+                    </p>
+                </td>
+            </tr>
+            {* cat *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[1]}" target="_blank">
+                        {$PAGE.modificador.id[1]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[1]}</pre>
+                </td>
+                <td>
+                    <pre class="result">{$PAGE.modificador.texto[1]|cat: "<b>[TEXTO CONCATENADO]</b> "}</pre>
+                </td>
+            </tr>
+            {* count_characters *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[2]}" target="_blank">
+                        {$PAGE.modificador.id[2]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[2]}</pre>
+                </td>
+                <td>
+                    <p>
+                        Conteo caracteres con espacio:
+                        <br/>
+                        <pre class="result">{$PAGE.modificador.texto[2]|count_characters}</pre>
+                    </p>
+                    <p>
+                        Conteo caracteres sin espacio:
+                        <br/>
+                        <pre class="result">{$PAGE.modificador.texto[2]|count_characters:true}</pre>
+                    </p>
+                </td>
+            </tr>
+            {* count_paragraphs *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[3]}" target="_blank">
+                        {$PAGE.modificador.id[3]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[3]}</pre>
+                </td>
+                <td>
+                    Conteo párrafos:
+                    <br/>
+                    <pre class="result">{$PAGE.modificador.texto[3]|count_paragraphs}</pre>
+                </td>
+            </tr>
+            {* count_sentences *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[4]}" target="_blank">
+                        {$PAGE.modificador.id[4]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[4]}</pre>
+                </td>
+                <td>
+                    Conteo de oraciones:
+                    <br/>
+                    <pre class="result">{$PAGE.modificador.texto[4]|count_sentences}</pre>
+                </td>
+            </tr>
+            {* count_words *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[5]}" target="_blank">
+                        {$PAGE.modificador.id[5]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[5]}</pre>
+                </td>
+                <td>
+                    Conteo de palabras:
+                    <br/>
+                    <pre class="result">{$PAGE.modificador.texto[5]|count_words}</pre>
+                </td>
+            </tr>
+            {* date_format *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[6]}" target="_blank">
+                        {$PAGE.modificador.id[6]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[6]}</pre>
+                </td>
+                <td>
+                    Valores generados desde la fecha original:
+                    <br/>
+                    <pre class="result">{$PAGE.modificador.texto[5]|date_format:"%D"}</pre>
+                    <pre class="result">{$PAGE.modificador.texto[5]|date_format:"%I:%M %p"}</pre>
+                    <pre class="result">{$PAGE.modificador.texto[5]|date_format:"%A, %B %e, %Y"}</pre>
+                    <pre class="result">{$PAGE.modificador.texto[5]|date_format:"%H:%M:%S"}</pre>
+                </td>
+            </tr>
+            {* default *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[7]}" target="_blank">
+                        {$PAGE.modificador.id[7]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[7]}</pre>
+                </td>
+                <td>
+                    Trabajando por el valor por defecto:
+                    <br/>
+                    <pre class="result">{$PAGE.modificador.texto[7]|default:"[valor por defecto] "}</pre>
+                </td>
+            </tr>
+            {* escape *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[8]}" target="_blank">
+                        {$PAGE.modificador.id[8]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[8]}</pre>
+                </td>
+                <td>
+                    <p>
+                        {literal}
+						Escapado html & " ' < > *:
+                        <br/>
+                        {/literal}
+                        <pre class="result">{$PAGE.modificador.texto[8]|escape:html|@debug_print_var}</pre>
+                    </p>
+                    <p>
+                        Escapado htmlall todo el texto:
+                        <br/>
+                        <pre class="result">{$PAGE.modificador.texto[8]|escape:htmlall|@debug_print_var}</pre>
+                    </p>
+                    <p>
+                        Pasando a formato de URL:
+                        <br/>
+                        <pre class="result">{$PAGE.modificador.texto[8]|escape:url|@debug_print_var}</pre>
+                    </p>
+                    <p>
+                        Delimitando por comillas simples:
+                        <br/>
+                        <pre class="result">{$PAGE.modificador.texto[8]|escape:quotes}</pre>
+                    </p>
+                    <p>
+                        Formateando en hexadecimal:
+                        <br/>
+                        <pre class="result">{$PAGE.modificador.texto[8]|escape:hex}</pre>
+                    </p>
+                </td>
+            </tr>
+            {* indent *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[9]}" target="_blank">
+                        {$PAGE.modificador.id[9]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[9]}</pre>
+                </td>
+                <td>
+                    <p>
+                        Identado por defecto:
+                        <br/>
+                        <pre class="result">{$PAGE.modificador.texto[9]|indent}</pre>
+                    </p>
+                    <p>
+                        Poner un tabulador al inicio:
+                        <br/>
+                        <pre class="result">{$PAGE.modificador.texto[9]|indent:1:"\t"}</pre>
+                    </p>
+                </td>
+            </tr>
+            {* lower *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[10]}" target="_blank">
+                        {$PAGE.modificador.id[10]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[10]}</pre>
+                </td>
+                <td>
+                    <div class="result">
+                        {$PAGE.modificador.texto[10]|lower}
+                    </div>
+                </td>
+            </tr>
+            {* nl2br *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[11]}" target="_blank">
+                        {$PAGE.modificador.id[11]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[11]}</pre>
+                </td>
+                <td>
+                    <div class="result">
+                        {$PAGE.modificador.texto[11]|nl2br}
+                    </div>
+                </td>
+            </tr>
+            {* regex_replace *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[12]}" target="_blank">
+                        {$PAGE.modificador.id[12]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[12]}</pre>
+                </td>
+                <td>
+                    Suprimir los salos de línea:
+                    <pre class="result">{$PAGE.modificador.texto[12]|regex_replace:"/[\r\t\n]/":" "}</pre>
+                </td>
+            </tr>
+            {* replace *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[13]}" target="_blank">
+                        {$PAGE.modificador.id[13]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[13]}</pre>
+                </td>
+                <td>
+                    Suprimir los salos de línea:
+                    <pre class="result">{$PAGE.modificador.texto[13]|replace:"linea":"l-i-n-e-a"}</pre>
+                </td>
+            </tr>
+            {* spacify *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[14]}" target="_blank">
+                        {$PAGE.modificador.id[14]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[14]}</pre>
+                </td>
+                <td>
+                    Suprimir los salos de línea:
+                    <pre class="result">{$PAGE.modificador.texto[13]|spacify:"-"}</pre>
+                </td>
+            </tr>
+            {* string_format *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[15]}" target="_blank">
+                        {$PAGE.modificador.id[15]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[15]}</pre>
+                </td>
+                <td>
+                    Formateo de numeros:
+                    <pre class="result">{$PAGE.modificador.texto[15]|string_format:"%.2f"}</pre>
+                    <pre class="result">{$PAGE.modificador.texto[15]|string_format:"%d"}</pre>
+                </td>
+            </tr>
+            {* strip *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[16]}" target="_blank">
+                        {$PAGE.modificador.id[16]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[16]}</pre>
+                </td>
+                <td>
+                    <pre class="result">{$PAGE.modificador.texto[16]|strip}</pre>
+                </td>
+            </tr>
+            {* strip_tags *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[17]}" target="_blank">
+                        {$PAGE.modificador.id[17]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[17]|@debug_print_var}</pre>
+                </td>
+                <td>
+                    Se eliminan los tags html del texto:
+                    <pre class="result">{$PAGE.modificador.texto[17]|strip_tags}</pre>
+                </td>
+            </tr>
+            {* truncate *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[18]}" target="_blank">
+                        {$PAGE.modificador.id[18]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[18]}</pre>
+                </td>
+                <td>
+                    <pre class="result">{$PAGE.modificador.texto[18]|truncate}</pre>
+                    <pre class="result">{$PAGE.modificador.texto[18]|truncate:15}</pre>
+                    <pre class="result">{$PAGE.modificador.texto[18]|truncate:15:""}</pre>
+                    <pre class="result">{$PAGE.modificador.texto[18]|truncate:15:"---"}</pre>
+                    <pre class="result">{$PAGE.modificador.texto[18]|truncate:15:"":true}</pre>
+                    <pre class="result">{$PAGE.modificador.texto[18]|truncate:15:"...":true}</pre>
+                </td>
+            </tr>
+            {* upper *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[19]}" target="_blank">
+                        {$PAGE.modificador.id[19]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[19]}</pre>
+                </td>
+                <td>
+                    <pre class="result">{$PAGE.modificador.texto[19]|upper}</pre>
+                </td>
+            </tr>
+            {* wordwrap *}
+            <tr bgcolor="#FFFFFFF">
+                <td>
+                    <a href="{$PAGE.modificador.enlace[20]}" target="_blank">
+                        {$PAGE.modificador.id[20]}
+                    </a>
+                </td>
+                <td>
+                    <pre>{$PAGE.modificador.texto[20]}</pre>
+                </td>
+                <td>
+                    <pre class="result">{$PAGE.modificador.texto[20]|wordwrap:18}</pre>
+                    <pre class="result">{$PAGE.modificador.texto[20]|wordwrap:18:"<br/>\n"|@htmlspecialchars}</pre>
+                    <pre class="result">{$PAGE.modificador.texto[20]|wordwrap:18:"\n":true}</pre>
+                </td>
+            </tr>
+        </table>
+        <hr/>
+        <p>
+            <a href="index.php?s=s2&do=426">
+                Anterior
+            </a>
+            |
+            <a href="index.php?s=s2">
+                Indice
+            </a>
+            |
+            <a href="index.php?s=s2&do=432">
+                Siguiente
+            </a>
+        </p>
+    </div>
+</section>

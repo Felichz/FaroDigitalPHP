@@ -1,0 +1,70 @@
+<section>
+    <h2>
+        Unidad 3 :: Repaso Práctico - Modelo Vista Controlador
+    </h2>
+    <div class="semana">
+        <h2>
+            Desarrollo PHP POO
+        </h2>
+        <h3>
+            Declaración de clase simple y uso de $this
+        </h3>
+        <p>
+            Ejemplo para levantar los datos enviados desde el objeto usuario ($oUO) asignado en la variable smarty $PAGE.usuario:
+            <br/>
+        </p>
+        <table bgcolor="#000000" border="0" cellpadding="5" cellspacing="1" width="90%">
+            <tr bgcolor="#dedede">
+                <td>
+                    <b>
+                        Descripción
+                    </b>
+                </td>
+                <td>
+                    <b>
+                        Salida HTML
+                    </b>
+                </td>
+            </tr>
+            <tr bgcolor="#ffffff">
+                <td>
+                    <p>
+                        Invocando el metodo desde la clase: {'$oUO->pruebaThis();'}
+                    </p>
+                </td>
+                <td>
+                    <div class="result">
+                        {$PAGE.data.msg[0]}
+                    </div>
+                </td>
+            </tr>
+            <tr bgcolor="#ffffff">
+                <td>
+                    <p>
+                        Invocando el método estático desde la clase: {'db_usuario::pruebaThis();'}
+                    </p>
+                </td>
+                <td>
+                    <div class="result">
+                        {$PAGE.data.msg[1]}
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <hr/>
+        <p>
+            <a href="index.php?s=s3">
+                Anterior
+            </a>
+            |
+            <a href="index.php?s=s3">
+                Indice
+            </a>
+            |
+            <a href="index.php?s=s3&do=32">
+                Siguiente
+            </a>
+        </p>
+    </div>
+</section>

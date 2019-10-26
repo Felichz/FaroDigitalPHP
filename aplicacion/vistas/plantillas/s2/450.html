@@ -1,0 +1,199 @@
+<section>
+    <style type="text/css">
+        table
+        {
+            background: #3C7A89 !important;
+        }
+
+        tr
+        {
+            background: #E6EBE0;
+        }
+
+        table tr td
+        {
+            padding: .5em;
+        }
+
+        table tr:first-child td
+        {
+            text-align: center;
+            font-size: 16px;
+            padding:.5em;
+            border-bottom: 5px solid #3C7A89;
+            font-weight: 600;
+        }
+
+        table tr:nth-child(2) td
+        {
+            padding: 1em;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        tr#filaCliente td
+        {
+            padding: .7em;
+        }
+
+        table#detalles
+        {
+            margin: .5em auto;
+            background: #E6EBE0 !important;
+            width: 30%;
+            text-align: center;
+        }
+
+        table#detalles tr:last-child
+        {
+            font-size: 16px;
+        }
+
+    </style>
+    <h1 style="text-align: center; font-size: 24px; font-weight: 600;">
+        PUNTO DE VENTA
+    </h1>
+    <div id="semana">
+        <form id="tPos">
+            <input name="s" type="hidden" value="s2"/>
+            <input name="do" type="hidden" value="450"/>
+            <table align="center" id="Tcliente" style="text-align: center; background-color: #000000; border: 0; cellpadding: 5; cellspacing: 1; width: 90%">
+                <tbody>
+                    <tr bgcolor="003366" valign="middle">
+                        <td colspan="5">
+                            DATOS DEL CLIENTE
+                        </td>
+                        <td colspan="2">
+                            VENTAS
+                        </td>
+                    </tr>
+                    <tr bgcolor="#cecece">
+                        <td>
+                            <strong>
+                                Cliente
+                            </strong>
+                        </td>
+                        <td>
+                            Direccion
+                        </td>
+                        <td>
+                            Telefono
+                        </td>
+                        <td>
+                            Email
+                        </td>
+                        <td>
+                            Antiguedad
+                        </td>
+                        <td rowspan="2">
+                            <input id="accion" name="accion" type="submit" value="Procesar"/>
+                        </td>
+                        <td rowspan="2">
+                            <input id="accion" name="accion" type="submit" value="Cancelar"/>
+                        </td>
+                    </tr>
+                    <tr id='filaCliente'>
+                        <td>
+                            {$PAGE.pullDownCL}
+                        </td>
+                        <td>
+                            {$PAGE.cliente.direccion}
+                        </td>
+                        <td>
+                            {$PAGE.cliente.celular}
+                        </td>
+                        <td>
+                            {$PAGE.cliente.email}
+                        </td>
+                        <td>
+                            {$PAGE.cliente.antiguedad}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+            <table align="center" id="tArticulos" style="text-align: center; background-color: #000000; border: 0; cellpadding: 5; cellspacing: 1; width: 90%">
+                <tbody>
+                    <tr bgcolor="003366" valign="middle">
+                        <td colspan="7">
+                            PRODUCTOS
+                        </td>
+                    </tr>
+                    <tr bgcolor="#cecece">
+                        <td>
+                            <b>
+                                Producto
+                            </b>
+                        </td>
+                        <td>
+                            Descripcion
+                        </td>
+                        <td>
+                            Cantidad
+                        </td>
+                        <td>
+                            Stock
+                        </td>
+                        <td>
+                            Importe
+                        </td>
+                        <td>
+                            Monto
+                        </td>
+                        <td>
+                            <input onclick="insRow()" type="button" value="+"/>
+                        </td>
+                    </tr>
+
+                    {if $PAGE['productos'] neq ''}
+                    {foreach $PAGE['productos'] as $producto}
+
+                    <tr bgcolor="#ffffff">
+                        <td>
+                            {$producto['pullDown']}
+                        </td>
+                        <td>
+                            <b>{$producto['nombre']}</b>
+                            <br/>
+                            {$producto['descripcion']}
+                        </td>
+                        <td>
+                            {$producto['cantidad']}
+                        </td>
+                        <td>
+                            {$producto['stock']}
+                        </td>
+                        <td>
+                            {$producto['importe']}
+                        </td>
+                        <td>
+                            {$producto['monto']}
+                        </td>
+                        <td>
+                            <input type='button' onclick='deleteRow("tArticulos", {$producto@iteration + 1})' value='-'/>
+                            <input type='hidden' name='row[]' value="{$producto@iteration + 1}"/>
+                        </td>    
+                    </tr>
+                    {/foreach}
+                    {/if}
+                </tbody>
+            </table>
+        </form>
+
+            <table id="detalles">
+                <tbody>
+                    <tr><td colspan="3">Detalles</td></tr>
+                    <tr>
+                        <td>Descuento</td>
+                        <td>IVA</td>
+                        <td>Total</td>
+                    </tr>
+                    <tr>
+                        <td>{$PAGE['descuento']}</td>
+                        <td>{$PAGE['iva']}</td>
+                        <td>{$PAGE['total']}</td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</section>
