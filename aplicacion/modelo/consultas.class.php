@@ -1,5 +1,10 @@
 <?php
 
+// Leyendo el código en 2019 puedo ver muchas cosas que mejoraría el mismo, ya que he
+// aprendido mucho durante este tiempo, por ejemplo en esta clase del modelo, veo
+// que hay mucho código que deberia ser parte de ciertos controladores y no estar
+// mezclado con el modelo.
+
 class consultas
 {
 	var $db;
