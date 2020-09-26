@@ -12,7 +12,7 @@ $PAGE['header']['autor'] = "FARO DIGITAL (info@farodigital.net.uy)";
 $PAGE['header']['titulo'] = "PRACTICA PHP AVANZADO";
 // CONTROLADOR PRINCIPAL
 $PAGE['s'] = isset($_GET['s']) ? strtolower($_GET['s']) : null;
-$PAGE['do'] = isset($_GET['do']) ? strtolower($_GET['do']) : null;
+$PAGE['do'] = isset($_GET['do']) ? $_GET['do'] : null;
 //
 
 if( isset($PAGE['s']) && file_exists("{$CONF['path']['controlador']}/{$PAGE['s']}/index.src.php"))
