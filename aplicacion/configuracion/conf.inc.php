@@ -24,10 +24,10 @@ $CONF['url']['jss'] = "{$CONF['url']['base']}/jss";
 
 // Punto de venta
 	// BD Remota de prueba
-	$CONF['db']['puntoventa']['user'] = "sql10309849";
-	$CONF['db']['puntoventa']['pw'] = "Wu3TWTC4uR";
-	$CONF['db']['puntoventa']['host'] = "sql10.freesqldatabase.com";
-	$CONF['db']['puntoventa']['nombre'] = "sql10309849";
+	$CONF['db']['puntoventa']['user'] = "b460a73cc837b4";
+	$CONF['db']['puntoventa']['pw'] = "74eea4b6";
+	$CONF['db']['puntoventa']['host'] = "us-cdbr-east-02.cleardb.com";
+	$CONF['db']['puntoventa']['nombre'] = "heroku_bccd4c9c7898550";
 	
 
 	// localhost

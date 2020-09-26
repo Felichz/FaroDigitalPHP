@@ -6,21 +6,20 @@
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+SET SQL_MODE='ALLOW_INVALID_DATES';
+-- -----------------------------------------------------
+-- Schema heroku_bccd4c9c7898550
+-- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema pv2
+-- Schema heroku_bccd4c9c7898550
 -- -----------------------------------------------------
+USE `heroku_bccd4c9c7898550` ;
 
 -- -----------------------------------------------------
--- Schema pv2
+-- Table `heroku_bccd4c9c7898550`.`clientes`
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `pv2` DEFAULT CHARACTER SET utf8 ;
-USE `pv2` ;
-
--- -----------------------------------------------------
--- Table `pv2`.`clientes`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pv2`.`clientes` (
+CREATE TABLE IF NOT EXISTS `clientes` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(30) NOT NULL,
   `apellido` VARCHAR(30) NOT NULL,
@@ -32,17 +31,17 @@ CREATE TABLE IF NOT EXISTS `pv2`.`clientes` (
   `celular` VARCHAR(30) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `celular` (`celular` ASC) VISIBLE,
-  UNIQUE INDEX `email` (`email` ASC) VISIBLE)
+  UNIQUE INDEX `celular` (`celular` ASC),
+  UNIQUE INDEX `email` (`email` ASC))
 ENGINE = InnoDB
 AUTO_INCREMENT = 1033
 DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `pv2`.`documento`
+-- Table `heroku_bccd4c9c7898550`.`documento`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pv2`.`documento` (
+CREATE TABLE IF NOT EXISTS `documento` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_cliente` INT(10) UNSIGNED NOT NULL,
   `fecha_venta` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -51,11 +50,11 @@ CREATE TABLE IF NOT EXISTS `pv2`.`documento` (
   `monto` FLOAT UNSIGNED NOT NULL,
   `id_documento` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_documento` (`id_documento` ASC) VISIBLE,
-  INDEX `id_cliente_idx` (`id_cliente` ASC) VISIBLE,
+  UNIQUE INDEX `id_documento` (`id_documento` ASC),
+  INDEX `id_cliente_idx` (`id_cliente` ASC),
   CONSTRAINT `documento_ibfk_1`
     FOREIGN KEY (`id_cliente`)
-    REFERENCES `pv2`.`clientes` (`id`)
+    REFERENCES `heroku_bccd4c9c7898550`.`clientes` (`id`)
     ON UPDATE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 46
@@ -63,9 +62,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `pv2`.`documento_detalle`
+-- Table `heroku_bccd4c9c7898550`.`documento_detalle`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pv2`.`documento_detalle` (
+CREATE TABLE IF NOT EXISTS `documento_detalle` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_documento` VARCHAR(255) NOT NULL,
   `id_producto` INT(10) UNSIGNED NOT NULL,
@@ -75,10 +74,10 @@ CREATE TABLE IF NOT EXISTS `pv2`.`documento_detalle` (
   `cantidad` INT(10) UNSIGNED NOT NULL,
   `monto` FLOAT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `id_documento_idx` (`id_documento` ASC) VISIBLE,
+  INDEX `id_documento_idx` (`id_documento` ASC),
   CONSTRAINT `documento_detalle_ibfk_1`
     FOREIGN KEY (`id_documento`)
-    REFERENCES `pv2`.`documento` (`id_documento`)
+    REFERENCES `heroku_bccd4c9c7898550`.`documento` (`id_documento`)
     ON UPDATE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 56
@@ -86,16 +85,16 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `pv2`.`productos`
+-- Table `heroku_bccd4c9c7898550`.`productos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pv2`.`productos` (
+CREATE TABLE IF NOT EXISTS `productos` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `descripcion` TEXT NOT NULL,
   `importe` FLOAT UNSIGNED NOT NULL,
   `stock` INT(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `nombre` (`nombre` ASC) VISIBLE)
+  UNIQUE INDEX `nombre` (`nombre` ASC))
 ENGINE = InnoDB
 AUTO_INCREMENT = 1031
 DEFAULT CHARACTER SET = utf8;
